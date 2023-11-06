@@ -1,0 +1,36 @@
+// For format details, see https://aka.ms/devcontainer.json.
+{
+	"name": "parametricpinn",
+
+	"containerUser": "docker_user",
+
+	"build": {
+        "dockerfile": "Dockerfile",
+		"context": "..",
+		"args": {
+			"username": "docker_user",
+			"uid": "1000",
+			"gid": "1000",
+			"requirements": "requirements_docker.txt",
+			"dev_requirements": "dev-requirements.txt"
+		}
+    },
+
+	"mounts": [
+		"source=${localWorkspaceFolder}/../output,target=/home/docker_user/output,type=bind,consistency=cached",
+		"source=${localWorkspaceFolder}/../input,target=/home/docker_user/input,type=bind,consistency=cached"
+	],
+
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"ms-python.isort",
+				"ms-azuretools.vscode-docker"
+			]
+		}
+	}
+}

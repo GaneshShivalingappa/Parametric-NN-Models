@@ -1,0 +1,46 @@
+### Directories
+Input
+Output
+
+### Python
+*.py[cod]
+
+### output files
+*.csv
+*.pdf
+*.png
+
+### Singularity 
+*.sif
+
+### virtual environments
+.env/
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pythonenv*
+# pyenv
+.python-version
+# pipenv
+Pipfile.lock
+
+### Visual Studio Code
+.vscode
+
+### Jupyter Notebook
+.ipynb_checkpoints
+# IPython
+profile_default/
+ipython_config.py
+
+### Rope project settings
+.ropeproject
+
+### OS related files
+# MacOS
+.DS_Store
+# thumbnail cache on Windows
+Thumbs.db

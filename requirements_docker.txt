@@ -1,0 +1,5 @@
+numpy==1.24.2
+pandas==2.0.1
+matplotlib==3.7.0
+shapely==2.0.1
+meshio==5.3.4
