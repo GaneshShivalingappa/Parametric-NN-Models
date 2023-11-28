@@ -1,0 +1,19 @@
+name: venv
+channels:
+  - defaults
+  - conda-forge
+  - pytorch
+  - nvidia
+dependencies:
+  - python=3.11.5
+  - pytorch=2.1.0
+  - pytorch-cuda=12.1
+  - fenics-dolfinx=0.6.0
+  - gmsh=4.11.1
+  - python-gmsh=4.11.1
+  - numpy=1.24.2
+  - pandas=2.0.1
+  - matplotlib=3.7.0
+  - scipy=1.10.1
+  - shapely=2.0.1
+  - pytest=7.2.2
