@@ -14,14 +14,14 @@ def normalize_input(x,E):
     x_min = min(x)
     X_max = max(x)
     x_nor = (x - x_min)/(X_max-x_min)
-    print("X_nor:",x_nor)
+    #print("X_nor:",x_nor)
     E_min =  min(E)
     E_max = max(E)
     if E_min==E_max:
         E_nor = (E)/torch.mean(E)
     else:
         E_nor = (E - E_min)/(E_max-E_min)
-    print("E_nor:",E_nor)
+    #print("E_nor:",E_nor)
     return x_nor,E_nor
     #return E_nor
 
@@ -63,11 +63,11 @@ def FEM_data(no_element, num_samples_train):
         u = torch.from_numpy(u).type(torch.float)
         u_data.append(u)
 
-    print(u_data)
+    #print(u_data)
 
     u_data = torch.cat(u_data, dim=0)
     u_data = u_data.reshape(-1,1)
-    print(u_data)
+    #print(u_data)
     
 
     print("Create training data ...")
@@ -119,11 +119,11 @@ def FEM_data(no_element, num_samples_train):
         x = PDE_data.x_coor
         x_e = PDE_data.x_E
         x,x_e = normalize_input(x,x_e)
-        print('input normalized',torch.concat((x, x_e), dim=1))
+        #print('input normalized',torch.concat((x, x_e), dim=1))
         u = ansatz(torch.concat((x, x_e), dim=1))
-        print(u)
+        #print(u)
         loss = loss_metric(u,u_data)
-        print(loss)
+        #print(loss)
         return loss
 
     #Training
@@ -175,5 +175,5 @@ for i in sample:
     mean.append(statistics.mean(train_time))
     std.append(statistics.stdev(train_time))
 
-print(mean)
-print(std)
+print("Mean:", mean)
+print("std:",std)

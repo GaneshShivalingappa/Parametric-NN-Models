@@ -17,7 +17,7 @@ def FEM_func(ansatz: Module, x_coors: Tensor, x_params: Tensor, K:Tensor):
     #disp = _displacement_func(_ansatz,x_coors,x_params)
     #print("input", torch.concat((x_coors, x_params), dim=1))
     disp = ansatz(torch.concat((x_coors, x_params), dim=1))
-    print(disp)
+    #print(disp)
     # quit()
     #print(torch.matmul(K,disp))
     return torch.matmul(K,disp)
