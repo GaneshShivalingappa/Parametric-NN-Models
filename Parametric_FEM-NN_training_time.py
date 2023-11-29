@@ -157,7 +157,6 @@ def FEM_NN(no_element,num_samples_train):
         x,x_e = normalize_input(x,x_e)
         #print('input normalized',torch.concat((x, x_e), dim=1))
         u = ansatz(torch.concat((x, x_e), dim=1))
-        #print(u)
         A = torch.matmul(K_main,u)
         loss_fem = loss_metric(A,F)
         loss = loss_fem 
