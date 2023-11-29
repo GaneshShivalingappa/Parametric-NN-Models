@@ -36,14 +36,14 @@ def normalize_input(x,E):
     x_min = min(x)
     X_max = max(x)
     x_nor = (x - x_min)/(X_max-x_min)
-    print("X_nor:",x_nor)
+    #print("X_nor:",x_nor)
     E_min =  min(E)
     E_max = max(E)
     if E_min==E_max:
         E_nor = (E)/torch.mean(E)
     else:
         E_nor = (E - E_min)/(E_max-E_min)
-    print("E_nor:",E_nor)
+    #print("E_nor:",E_nor)
     return x_nor,E_nor
 
 torch.manual_seed(1)
@@ -61,7 +61,7 @@ def FEM_NN(no_element,num_samples_train):
     length = 1.0
     num_points_pde = no_element+1
     batch_size_train = num_samples_train
-    num_epochs = 5
+    num_epochs = 32
     volume_force = 0.0
     min_youngs_modulus = 180.0
     max_youngs_modulus =240.0
@@ -148,16 +148,16 @@ def FEM_NN(no_element,num_samples_train):
         current_row += row_size
         current_col += col_size
 
-    print(K_main)
+    #print(K_main)
     F = torch.cat(F, dim=0)
 
     def loss_fun(ansatz,PDE_data):
         x = PDE_data.x_coor
         x_e = PDE_data.x_E
         x,x_e = normalize_input(x,x_e)
-        print('input normalized',torch.concat((x, x_e), dim=1))
+        #print('input normalized',torch.concat((x, x_e), dim=1))
         u = ansatz(torch.concat((x, x_e), dim=1))
-        print(u)
+        #print(u)
         A = torch.matmul(K_main,u)
         loss_fem = loss_metric(A,F)
         loss = loss_fem 
@@ -196,16 +196,15 @@ def FEM_NN(no_element,num_samples_train):
         mean_loss_fem = statistics.mean(loss_hist_fem_batches)
         loss_hist_fem.append(mean_loss_fem)
 
-        with torch.autograd.no_grad():
-            print(epoch,"Traning Loss pde:",loss.detach().item())
+        # with torch.autograd.no_grad():
+        #     print(epoch,"Traning Loss pde:",loss.detach().item())
 
     et = time.time()
 
-    print('Execution time:', et - st, 'seconds')
+    #print('Execution time:', et - st, 'seconds')
     return et - st
 
-#sample = [10,20,30,40,50,60,70,80,90,100]
-sample = [10,20]
+sample = [10,20,30,40,50,60,70,80,90,100]
 mean = []
 std = []
 
