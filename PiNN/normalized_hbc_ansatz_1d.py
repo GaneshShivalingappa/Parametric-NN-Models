@@ -41,11 +41,11 @@ class NormalizedHBCAnsatz1D(nn.Module):
     def forward(self, x: Tensor) -> Tensor:
         x_coor = self._extract_coordinates(x)
         norm_x = self._network_input_normalizer(x)
-        print(norm_x)
+        #print(norm_x)
         norm_y = self._boundary_data_func() + (
             self._distance_func(x_coor) * self._network(norm_x)
         )
-        print(self._hbc_ansatz_output_renormalizer(norm_y))
+        #print(self._hbc_ansatz_output_renormalizer(norm_y))
         return self._hbc_ansatz_output_renormalizer(norm_y)
 
 def create_normalized_hbc_ansatz_1D(
