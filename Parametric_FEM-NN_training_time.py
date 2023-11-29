@@ -195,8 +195,8 @@ def FEM_NN(no_element,num_samples_train):
         mean_loss_fem = statistics.mean(loss_hist_fem_batches)
         loss_hist_fem.append(mean_loss_fem)
 
-        # with torch.autograd.no_grad():
-        #     print(epoch,"Traning Loss pde:",loss.detach().item())
+        with torch.autograd.no_grad():
+            print(epoch,"Traning Loss pde:",loss.detach().item())
 
     et = time.time()
 
