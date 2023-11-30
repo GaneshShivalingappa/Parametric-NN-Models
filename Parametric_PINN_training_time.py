@@ -185,3 +185,4 @@ for i in sample:
 
 print(mean)
 print(std)
+print(torch.cuda.is_available())
