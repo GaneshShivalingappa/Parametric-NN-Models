@@ -162,10 +162,10 @@ def PINN(no_element, num_samples_train):
         loss_hist_pde.append(mean_loss_pde)
         loss_hist_stress_bc.append(mean_loss_stress_bc)
 
-        # with torch.autograd.no_grad():
+        with torch.autograd.no_grad():
 
-        #     print(epoch,"Traning Loss pde:",mean_loss_pde)
-        #     print(epoch,"Traning Loss stress:",mean_loss_stress_bc)
+            print(epoch,"Traning Loss pde:",mean_loss_pde)
+            #print(epoch,"Traning Loss stress:",mean_loss_stress_bc)
 
     et = time.time()
     return et - st
