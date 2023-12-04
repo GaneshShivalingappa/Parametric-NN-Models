@@ -155,8 +155,8 @@ def FEM_data(no_element, num_samples_train):
         mean_loss_fem = statistics.mean(loss_hist_fem_batches)
         loss_hist_fem.append(mean_loss_fem)
 
-        # with torch.autograd.no_grad():
-        #     print(epoch,"Traning Loss pde:",loss.detach().item())
+        with torch.autograd.no_grad():
+            print(epoch,"Traning Loss pde:",loss.detach().item())
 
     et = time.time()
     return et - st
@@ -170,7 +170,7 @@ std = []
 for i in sample:
     train_time = []
     for j in range(25):
-        t = FEM_data(no_element=63, num_samples_train=i)
+        t = FEM_data(no_element=i-1, num_samples_train=64)
         train_time.append(t)
     mean.append(statistics.mean(train_time))
     std.append(statistics.stdev(train_time))
