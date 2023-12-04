@@ -207,7 +207,7 @@ std = []
 
 for i in sample:
     train_time = []
-    for j in range(100):
+    for j in range(25):
         t = FEM_NN(no_element=i-1, num_samples_train=64)
         train_time.append(t)
     mean.append(statistics.mean(train_time))
