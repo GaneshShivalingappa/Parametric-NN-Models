@@ -1,14 +1,12 @@
 import torch
 import torch.nn as nn
 import numpy as np
-import matplotlib.pyplot as plt
 from torch.autograd import Variable
 from rod.data import create_training_dataset_1D, collate_training_data_1D
 from PiNN.network import FFNN
 from FEM_test.bc_FEM import FEM
 from torch.utils.data import DataLoader 
 import statistics
-from numpy import linalg
 from torch import Tensor
 import time
 
@@ -209,7 +207,7 @@ std = []
 
 for i in sample:
     train_time = []
-    for j in range(10):
+    for j in range(100):
         t = FEM_NN(no_element=i-1, num_samples_train=64)
         train_time.append(t)
     mean.append(statistics.mean(train_time))
