@@ -169,7 +169,7 @@ std = []
 
 for i in sample:
     train_time = []
-    for j in range(10):
+    for j in range(25):
         t = FEM_data(no_element=63, num_samples_train=i)
         train_time.append(t)
     mean.append(statistics.mean(train_time))
@@ -177,3 +177,4 @@ for i in sample:
 
 print("Mean:", mean)
 print("std:",std)
+print(torch.cuda.is_available())
