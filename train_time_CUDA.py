@@ -13,11 +13,11 @@ PINN_std_25_64_training_sample_32 = [0.7192044745925901, 0.7341131254961213, 0.4
 PINN_mean_25_64_node_32 = [2.213827724456787, 2.4760064601898195, 2.849748229980469, 2.6159934329986574, 3.073472013473511, 3.4130670738220217, 3.325650243759155, 3.6604987144470216, 3.7040756225585936, 3.663414182662964]
 PINN_std_25_64_node_32 = [0.6117492833362412, 0.6335384855634466, 0.5869086926217358, 0.6570191923077201, 0.8729779651711693, 0.6758015222273265, 0.8559554785324527, 0.7751253801940063, 0.6546558746296426, 0.8769127650436898]
 
-FEM_data_mean_10_64_nodes_32 = 
-FEM_data_std_10_64_nodes_32  = 
+FEM_data_mean_10_64_nodes_32 = []
+FEM_data_std_10_64_nodes_32  = []
 
-FEM_data_mean_10_64_training_sample_32 = 
-FEM_data_std_10_64_training_sample_32 = 
+FEM_data_mean_10_64_training_sample_32 = []
+FEM_data_std_10_64_training_sample_32 = []
 
 plt.figure(1)
 #plt.errorbar(time,FENN_mean_5_64_training_sample,FENN_std_5_64_training_sample,label='FEM-NN_5', fmt='-o',capsize=3, linewidth=1)
