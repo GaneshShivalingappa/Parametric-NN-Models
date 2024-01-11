@@ -181,7 +181,7 @@ for i in sample:
         t = PINN(no_element=64, num_samples_train=i)
         train_time.append(t)
     mean.append(statistics.mean(train_time))
-    std.append(statistics.stdev(train_time))
+    std.append((statistics.stdev(train_time))/(np.sqrt(100)))
 
 print(mean)
 print(std)
