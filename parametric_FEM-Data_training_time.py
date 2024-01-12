@@ -169,11 +169,11 @@ std = []
 
 for i in sample:
     train_time = []
-    for j in range(100):
-        t = FEM_data(no_element=63, num_samples_train=i)
+    for j in range(25):
+        t = FEM_data(no_element=i-1, num_samples_train=64)
         train_time.append(t)
     mean.append(statistics.mean(train_time))
-    std.append((statistics.stdev(train_time))/(np.sqrt(100)))
+    std.append((statistics.stdev(train_time))/(np.sqrt(25)))
 
 print("Mean:", mean)
 print("std:",std)
