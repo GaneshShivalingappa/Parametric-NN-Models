@@ -178,7 +178,7 @@ std = []
 for i in sample:
     train_time = []
     for j in range(25):
-        t = PINN(no_element=i, num_samples_train=64)
+        t = PINN(no_element=64, num_samples_train=i)
         train_time.append(t)
     mean.append(statistics.mean(train_time))
     std.append((statistics.stdev(train_time))/(np.sqrt(25)))
