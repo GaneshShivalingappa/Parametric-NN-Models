@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using these metadata."
+abstract: "A commandline tool to run Slurm sbatch commands over SSH"
+type: software
+license: GNU GPLv3 
+authors:
+  - family-names: Shivalingappa
+    given-names: Ganesh
+    orcid: https://orcid.org/0009-0002-9194-2046
+title: hpc-rocket
+version: 0.6.0
+url: https://github.com/GaneshShivalingappa/Parametric_NN_Models
+repository-code: https://github.com/GaneshShivalingappa/Parametric_NN_Models
