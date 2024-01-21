@@ -4,6 +4,6 @@ In this project, WE conducted a comparative analysis between the Physics Informe
 
 # How it works
 
-In this project we are performing two amalysis.
+In this project we are performing two analysis.
 
 1. Peformance 
