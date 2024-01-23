@@ -6,4 +6,6 @@ In this project, WE conducted a comparative analysis between the Physics Informe
 
 In this project we are performing two analysis.
 
-1. Peformance 
+# 1. Performance Analysis
+
+In this we are comparing the displacement predicted from all the three methods with the analytical solution. In addition the relative error is calculated and ploted for each method. these plotes can be recrealed by runing following command.
