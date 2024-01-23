@@ -10,11 +10,17 @@ In this project we are performing two analysis.
 
 In this we are comparing the displacement predicted from all the three methods with the analytical solution. In addition the relative error is calculated and ploted for each method. these plotes can be recrealed by runing following command.
 
-Parametric PINN
-%singularity run --app Parametric_PINN my_container.sif
+Parametric PINN 
+'''
+singularity run --app Parametric_PINN my_container.sif
+'''
 
 Parametric FEM-NN
+'''
 %singularity run --app Parametric_FEM-NN my_container.sif
+'''
 
 Parametric FEM-data based model
+'''
 %singularity run --app Parametric_FEM-Data my_container.sif
+'''
