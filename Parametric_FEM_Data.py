@@ -216,7 +216,6 @@ u_abs = u_abs.reshape(num_points_pde*2,num_samples_train*2)
 u_relative_error = np.array(u_relative_error)
 uu = u_relative_error.reshape(num_points_pde*2,num_samples_train*2)
 x = np.linspace(0,1,num_points_pde*2)
-print(uu)
 
 plt.figure(0)
 plt.semilogy(loss_hist_fem)
