@@ -9,7 +9,7 @@
 ## Build command
 ## singularity build --fakeroot --force parametric_nn.sif app/.devcontainer/container_conda.def
 
-SCRIPT=parametric_FEM-Data_training_time.py
+SCRIPT=parametric_FEM_Data_training_time.py
 
 srun singularity run \
  --cleanenv \
