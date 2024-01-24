@@ -76,3 +76,25 @@ From: nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
     This is the help for foo.
 ##############################
 
+##############################
+# Parametric_FEM-NN
+##############################
+%apprun Parametric_FEM-NN
+    #!/bin/bash
+    exec ${CONDA_DIR}/envs/$(head -n 1 /data/conda_venv.yml | cut -f 2 -d ' ')/bin/python3 /data/Parametric_FEM-NN.py
+
+%apphelp Parametric_FEM-NN
+    This is the help for Parametric_FEM-NN.
+##############################
+
+##############################
+# Parametric_FEM-Data
+##############################
+%apprun Parametric_FEM-Data
+    #!/bin/bash
+    exec ${CONDA_DIR}/envs/$(head -n 1 /data/conda_venv.yml | cut -f 2 -d ' ')/bin/python3 /data/Parametric_FEM-Data.py
+
+%apphelp Parametric_FEM-Data
+    This is the help for Parametric_FEM-Data.
+##############################
+
