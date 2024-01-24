@@ -3,13 +3,13 @@ import torch.nn as nn
 import numpy as np
 import matplotlib.pyplot as plt
 from torch.autograd import Variable
-from rod.data import create_training_dataset_1D, collate_training_data_1D
-from PiNN.network import FFNN
+from nn_model.data import create_training_dataset_1D, collate_training_data_1D
+from nn_model.network import FFNN
 from torch.utils.data import DataLoader 
 import statistics
 from torch import Tensor
 import time
-from FEM_test.bc_FEM import NN_FEM
+from FEM.fem import NN_FEM
 seed = 1
 torch.manual_seed(seed)
 no_element = 127
@@ -22,7 +22,7 @@ Vol_force = 0.0
 length = 1.0
 num_points_pde = no_element+1
 batch_size_train = num_samples_train
-num_epochs = 5
+num_epochs = 32
 volume_force = 0.0
 min_youngs_modulus = 180.0
 max_youngs_modulus =240.0
@@ -31,14 +31,12 @@ def normalize_input(x,E):
     x_min = min(x)
     X_max = max(x)
     x_nor = (x - x_min)/(X_max-x_min)
-    print("X_nor:",x_nor)
     E_min =  min(E)
     E_max = max(E)
     if E_min==E_max:
         E_nor = (E)/torch.mean(E)
     else:
         E_nor = (E - E_min)/(E_max-E_min)
-    print("E_nor:",E_nor)
     return x_nor,E_nor
     #return E_nor
 

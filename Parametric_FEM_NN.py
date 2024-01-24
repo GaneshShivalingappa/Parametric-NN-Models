@@ -2,9 +2,9 @@ import torch
 import torch.nn as nn
 import numpy as np
 import matplotlib.pyplot as plt
-from rod.data import create_training_dataset_1D, collate_training_data_1D
-from PiNN.network import FFNN
-from FEM_test.bc_FEM import FEM
+from nn_model.data import create_training_dataset_1D, collate_training_data_1D
+from nn_model.network import FFNN
+from FEM.fem import FEM
 from torch.utils.data import DataLoader 
 import statistics
 from torch import Tensor
@@ -22,7 +22,7 @@ Vol_force = 0.0
 length = 1.0
 n_node = num_points_pde = no_element+1
 batch_size_train = num_samples_train
-num_epochs = 5
+num_epochs = 32
 volume_force = 0.0
 min_youngs_modulus = 180.0
 max_youngs_modulus =240.0
@@ -54,14 +54,12 @@ def normalize_input(x,E):
     x_min = min(x)
     X_max = max(x)
     x_nor = (x - x_min)/(X_max-x_min)
-    print("X_nor:",x_nor)
     E_min =  min(E)
     E_max = max(E)
     if E_min==E_max:
         E_nor = (E)/torch.mean(E)
     else:
         E_nor = (E - E_min)/(E_max-E_min)
-    print("E_nor:",E_nor)
     return x_nor,E_nor
 
 
@@ -133,16 +131,13 @@ for tensor in K:
     current_row += row_size
     current_col += col_size
 
-print(K_main)
 F = torch.cat(F, dim=0)
 
 def loss_fun(ansatz,PDE_data):
     x = PDE_data.x_coor
     x_e = PDE_data.x_E
     x,x_e = normalize_input(x,x_e)
-    print('input normalized',torch.concat((x, x_e), dim=1))
     u = ansatz(torch.concat((x, x_e), dim=1))
-    print(u)
     A = torch.matmul(K_main,u)
     loss_fem = loss_metric(A,F)
     loss = loss_fem 
@@ -209,7 +204,6 @@ def true_displacement(x, volume_force, force, area, length, youngs):
 u_pred = []
 u_real = []
 E_pred = np.linspace(max_youngs_modulus,min_youngs_modulus,num_samples_train*2)
-print(E_pred)
 
 for i in E_pred:
     input_femnn = prediction_input_normalized(x_cord=x,E_pred=i)
@@ -223,7 +217,6 @@ for i in E_pred:
 u_pred_con = np.concatenate(u_pred)
 u_real_con = np.concatenate(u_real)
 uu = u_pred_con.reshape(n_node*2,num_samples_train*2)
-print(uu)
 
 u_relative_error = []
 

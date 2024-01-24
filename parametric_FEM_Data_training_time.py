@@ -1,13 +1,13 @@
 import torch
 import torch.nn as nn
 import numpy as np
-from rod.data import create_training_dataset_1D, collate_training_data_1D
-from PiNN.network import FFNN
+from nn_model.data import create_training_dataset_1D, collate_training_data_1D
+from nn_model.network import FFNN
 from torch.utils.data import DataLoader 
 import statistics
 from torch import Tensor
 import time
-from FEM_test.bc_FEM import NN_FEM
+from FEM.fem import NN_FEM
 torch.manual_seed(1)
 
 def normalize_input(x,E):
@@ -21,7 +21,6 @@ def normalize_input(x,E):
     else:
         E_nor = (E - E_min)/(E_max-E_min)
     return x_nor,E_nor
-    #return E_nor
 
 
 def calculate_displacements_solution_1D(

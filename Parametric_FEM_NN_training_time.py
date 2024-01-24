@@ -2,9 +2,9 @@ import torch
 import torch.nn as nn
 import numpy as np
 from torch.autograd import Variable
-from rod.data import create_training_dataset_1D, collate_training_data_1D
-from PiNN.network import FFNN
-from FEM_test.bc_FEM import FEM
+from nn_model.data import create_training_dataset_1D, collate_training_data_1D
+from nn_model.network import FFNN
+from FEM.fem import FEM
 from torch.utils.data import DataLoader 
 import statistics
 from torch import Tensor

@@ -2,10 +2,10 @@ import torch
 import numpy as np
 from torch import Tensor
 import matplotlib.pyplot as plt
-from rod.data import create_training_dataset_1D, collate_training_data_1D
-from PiNN.network import FFNN
-from PiNN.normalized_hbc_ansatz_1d import create_normalized_hbc_ansatz_1D
-from rod.momentum import momentum_equation_func,traction_func
+from nn_model.data import create_training_dataset_1D, collate_training_data_1D
+from nn_model.network import FFNN
+from nn_model.normalized_hbc_ansatz_1d import create_normalized_hbc_ansatz_1D
+from nn_model.momentum import momentum_equation_func,traction_func
 from torch.utils.data import DataLoader 
 import statistics
 from torch import Tensor
@@ -33,7 +33,7 @@ length = 1.0
 num_samples_train = 128
 num_points_pde = 128
 batch_size_train = num_samples_train
-num_epochs = 5
+num_epochs = 32
 volume_force = 0.0
 min_youngs_modulus = 180.0
 max_youngs_modulus = 240.0
