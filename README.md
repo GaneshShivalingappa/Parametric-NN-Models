@@ -4,26 +4,33 @@ In this project, we conducted a comparative analysis between the Physics Informe
 
 # How it works
 
-In this project we are performing two analysis.
+In this project we have conducted two analysis on Physics Informed Neural Network, Finite Element Method enhanced neural network, FEM data-based model.
 
-1. Performance Analysis
+The container can be built by running follwing command in the terminal.
+```
+singularity build --fakeroot --force parametric_nn.sif app/Singularity/container_production.def
+```
 
-In this we are comparing the displacement predicted from all the three methods with the analytical solution. In addition the relative error is calculated and ploted for each method. these plotes can be recrealed by runing following command.
+## 1. Performance Analysis
+
+We are comparing the displacement predicted from all the three methods with the analytical solution. In addition the relative error is calculated and ploted for each method. The plotes for each method can be recreated in your local enviroment after creation the container by runing following command..
 
 Parametric PINN 
 ```
-singularity run --app Parametric_PINN my_container.sif
+singularity run --app Parametric_PINN parametric_nn.sif
 ```
 
 Parametric FEM-NN
 ```
-singularity run --app Parametric_FEM-NN my_container.sif
+singularity run --app Parametric_FEM-NN parametric_nn.sif
 ```
 
 Parametric FEM-data based model
 ```
-singularity run --app Parametric_FEM-Data my_container.sif
+singularity run --app Parametric_FEM-Data parametric_nn.sif
 ```
-2. Training time Analysis
+## 2. Training Time Analysis
 
-test
+
+
+
