@@ -14,14 +14,12 @@ def normalize_input(x,E):
     x_min = min(x)
     X_max = max(x)
     x_nor = (x - x_min)/(X_max-x_min)
-    #print("X_nor:",x_nor)
     E_min =  min(E)
     E_max = max(E)
     if E_min==E_max:
         E_nor = (E)/torch.mean(E)
     else:
         E_nor = (E - E_min)/(E_max-E_min)
-    #print("E_nor:",E_nor)
     return x_nor,E_nor
     #return E_nor
 
