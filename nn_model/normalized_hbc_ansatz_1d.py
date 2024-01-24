@@ -3,8 +3,8 @@ from torch import Tensor
 from torch.nn import Module
 import torch
 import torch.nn as nn
-from PiNN.hbc_ansatz_normalizers import (HBCAnsatzNormalizer,HBCAnsatzRenormalizer)
-from PiNN.normalizednetwork import InputNormalizer
+from nn_model.hbc_ansatz_normalizers import (HBCAnsatzNormalizer,HBCAnsatzRenormalizer)
+from nn_model.normalizednetwork import InputNormalizer
 
 NetworkInputNormalizer: TypeAlias = InputNormalizer
 
