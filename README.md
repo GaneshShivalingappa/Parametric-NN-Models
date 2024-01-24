@@ -13,7 +13,7 @@ singularity build --fakeroot --force parametric_nn.sif app/Singularity/container
 
 ## 1. Performance Analysis
 
-We are comparing the displacement predicted from all the three methods with the analytical solution. In addition the relative error is calculated and ploted for each method. The plotes for each method can be recreated in your local enviroment after creation the container by runing following command..
+We are comparing the displacement predicted from all the three methods with the analytical solution. In addition the relative error is calculated and ploted for each method. The plotes for each method can be recreated in your local enviroment after creation the container by runing following command.
 
 Parametric PINN 
 ```
@@ -31,6 +31,15 @@ singularity run --app Parametric_FEM-Data parametric_nn.sif
 ```
 ## 2. Training Time Analysis
 
+We conducted training time analysis in two scenarios. In first scenario, we keep the number of node constant by varying the number of samples and in second scenario, it is vice-versa. the command to run the code to create the plot is given below.
 
+Number of node variying and keeping number samples constant.
+```
+singularity run --app training_time_node parametric_nn.sif
+```
 
+Number of samples variying and keeping number nodes constant.
+```
+singularity run --app training_time_sample parametric_nn.sif
+```
 
