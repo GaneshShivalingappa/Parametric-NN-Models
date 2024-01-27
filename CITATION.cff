@@ -1,13 +1,16 @@
 cff-version: 1.0.0
-message: "If you use this software, please cite it using these metadata."
-abstract: "A commandline tool to run Slurm sbatch commands over SSH"
+message: "If you use this software, please cite it as below."
 type: software
 license: GNU GPLv3 
 authors:
   - family-names: Shivalingappa
     given-names: Ganesh
     orcid: https://orcid.org/0009-0002-9194-2046
+  - family-names: Anton
+    given-names: David
+  - family-names: Wessels
+    given-names: Henning
 title: Parametric Neural Network models
-version: 0.1.0
-url: https://github.com/GaneshShivalingappa/Parametric_NN_Models
-repository-code: https://github.com/GaneshShivalingappa/Parametric_NN_Models
+version: 1.0.0
+url: https://github.com/GaneshShivalingappa/Parametric-NN-Models.git
+repository-code: https://github.com/GaneshShivalingappa/Parametric-NN-Models.git
