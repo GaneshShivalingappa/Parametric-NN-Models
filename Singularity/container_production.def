@@ -66,17 +66,6 @@ From: nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
 # %help
 
 ##############################
-# error_comparision
-##############################
-%apprun error_comparision
-    #!/bin/bash
-    exec ${CONDA_DIR}/envs/$(head -n 1 /data/conda_venv.yml | cut -f 2 -d ' ')/bin/python3 /data/train_time_CUDA_100.py
-
-%apphelp error_comparision
-    This is the help for foo.
-##############################
-
-##############################
 # Parametric_FEM-NN
 ##############################
 %apprun Parametric_FEM_NN
