@@ -1,16 +1,41 @@
-cff-version: 1.0.0
-message: "If you use this software, please cite it as below."
+cff-version: 1.0.1
+message: "If you use this software, please cite it using these metadata."
 type: software
-license: GNU GPLv3 
+license: GPL-3.0-or-later
 authors:
   - family-names: Shivalingappa
     given-names: Ganesh
     orcid: https://orcid.org/0009-0002-9194-2046
   - family-names: Anton
     given-names: David
+    orcid: https://orcid.org/0000-0002-0888-0220
   - family-names: Wessels
     given-names: Henning
+    orcid: https://orcid.org/0000-0002-2542-1130
 title: Parametric Neural Network models
 version: 1.0.0
 url: https://github.com/GaneshShivalingappa/Parametric-NN-Models.git
 repository-code: https://github.com/GaneshShivalingappa/Parametric-NN-Models.git
+references:
+  - type: software
+    title: PyTorch
+    version: 1.9.0
+    url: https://pytorch.org
+
+  - type: software
+    title: NumPy
+    version: 1.24.2
+    url: https://numpy.org
+    doi: 10.1038/s41586-020-2649-2
+  
+  - type: software
+    title: Matplotlib
+    version: 3.7.0
+    url: https://matplotlib.org
+    doi: 10.1109/MCSE.2007.55
+
+  - type: software
+    title: DOLFINx
+    version: 0.7.0
+    url: https://fenicsproject.org/
+    doi: 10.5281/zenodo.10447666
