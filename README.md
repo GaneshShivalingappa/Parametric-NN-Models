@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10606502.svg)](https://doi.org/10.5281/zenodo.10606502)
+
 # Introduction
 
 In this project, we conducted a comparative analysis between the Physics Informed Neural Network (PINN) and the Finite Element Method enhanced neural network (FEM-NN), along with a FEM data-based neural network (FEM-Data-NN) models in the context of material parameter identification. These models can be used as surrogate models for material parameter identification by solving inverse problems. For this study, we considered a 1D bar fixed at one end and applied traction at the free end. Within this framework, we systematically evaluated and compared the performance of PINN, FEM-NN, and the FEM-Data-NN. The results were benchmarked against the analytical solution, and conducted a comprehensive training time analysis to provide insight into the computational efficiency of these methods.
