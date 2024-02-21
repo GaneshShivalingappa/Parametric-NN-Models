@@ -71,9 +71,6 @@ From: nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
 %apprun Parametric_FEM_NN
     #!/bin/bash
     exec ${CONDA_DIR}/envs/$(head -n 1 /data/conda_venv.yml | cut -f 2 -d ' ')/bin/python3 /data/Parametric_FEM_NN.py
-
-%apphelp Parametric_FEM-NN
-    This is the help for Parametric_FEM_NN.
 ##############################
 
 ##############################
@@ -82,9 +79,6 @@ From: nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
 %apprun Parametric_FEM_Data
     #!/bin/bash
     exec ${CONDA_DIR}/envs/$(head -n 1 /data/conda_venv.yml | cut -f 2 -d ' ')/bin/python3 /data/Parametric_FEM_Data.py
-
-%apphelp Parametric_FEM_Data
-    This is the help for Parametric_FEM_Data.
 ##############################
 
 ##############################
@@ -93,9 +87,6 @@ From: nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
 %apprun Parametric_PINN
     #!/bin/bash
     exec ${CONDA_DIR}/envs/$(head -n 1 /data/conda_venv.yml | cut -f 2 -d ' ')/bin/python3 /data/Parametric_PINN.py
-
-%apphelp Parametric_PINN
-    This is the help for Parametric_PINN.
 ##############################
 
 ##############################
@@ -104,9 +95,6 @@ From: nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
 %apprun training_time_node
     #!/bin/bash
     exec ${CONDA_DIR}/envs/$(head -n 1 /data/conda_venv.yml | cut -f 2 -d ' ')/bin/python3 /data/training_time_number_of_nodes.py
-
-%apphelp training_time_node
-    This is the help for training_time_node.
 ##############################
 
 ##############################
@@ -115,8 +103,5 @@ From: nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
 %apprun training_time_sample
     #!/bin/bash
     exec ${CONDA_DIR}/envs/$(head -n 1 /data/conda_venv.yml | cut -f 2 -d ' ')/bin/python3 /data/training_time_number_of_sample.py
-
-%apphelp training_time_sample
-    This is the help for training_time_sample.
 ##############################
 
