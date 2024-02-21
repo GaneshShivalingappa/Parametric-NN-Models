@@ -4,7 +4,7 @@ From: nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
 # %setup
 
 %files
-    app/ /data
+    app/conda_venv.yml /data/conda_venv.yml
 
 # %app*
 
