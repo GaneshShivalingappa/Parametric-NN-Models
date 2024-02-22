@@ -2,15 +2,15 @@ import torch
 import torch.nn as nn
 import numpy as np
 from torch.autograd import Variable
-from rod.data import create_training_dataset_1D, collate_training_data_1D
-from PiNN.network import FFNN
+from nn_model.data import create_training_dataset_1D, collate_training_data_1D
+from nn_model.network import FFNN
 from torch.utils.data import DataLoader 
 import statistics
 from torch import Tensor
 import time
-from FEM_test.bc_FEM import NN_FEM, FEM
-from PiNN.normalized_hbc_ansatz_1d import create_normalized_hbc_ansatz_1D
-from rod.momentum import momentum_equation_func,traction_func
+from FEM.fem import NN_FEM, FEM
+from nn_model.normalized_hbc_ansatz_1d import create_normalized_hbc_ansatz_1D
+from nn_model.momentum import momentum_equation_func,traction_func
 
 torch.manual_seed(1)
 
