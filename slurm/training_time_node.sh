@@ -14,5 +14,5 @@ srun singularity run \
  --env CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES \
  --nv \
  --nvccli \
- --app Parametric_FEM_NN \
+ --app training_time_node \
  parametric_nn.sif \

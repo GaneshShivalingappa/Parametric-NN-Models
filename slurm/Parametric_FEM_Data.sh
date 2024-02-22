@@ -14,5 +14,5 @@ srun singularity run \
  --env CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES \
  --nv \
  --nvccli \
- --app Parametric_FEM_NN \
+ --app Parametric_FEM_Data \
  parametric_nn.sif \
