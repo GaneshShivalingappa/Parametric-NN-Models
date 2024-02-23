@@ -64,7 +64,6 @@ train_batches = iter(train_dataloader)
 #model
 layer_sizes = [2, 8, 1]
 
-
 min_coordinate = 0.0
 max_coordinate = length
 min_displacement = displacement_left
@@ -111,7 +110,6 @@ def loss_fun(ansatz ,pde_data,stress_bc_data)-> tuple[Tensor, Tensor]:
         y = momentum_equation_func(network, x_coor, x_E)
         return loss_metric(y_true, y)
     
-    
     def loss_func_stress_bc(network, stress_bc_data) -> Tensor:
         x_coor = stress_bc_data.x_coor
         x_E = stress_bc_data.x_E
@@ -128,9 +126,6 @@ def loss_fun(ansatz ,pde_data,stress_bc_data)-> tuple[Tensor, Tensor]:
 
 loss_hist_pde = []
 loss_hist_stress_bc = []
-valid_hist_mae = []
-valid_hist_rl2 = []
-valid_epochs = []
 def loss_func_closure() -> float:
         optimizer.zero_grad()
         loss_pde, loss_stress_bc = loss_fun(ansatz, batch_pde, batch_stress_bc)
@@ -145,7 +140,6 @@ for epoch in range(num_epochs):
     train_batches = iter(train_dataloader)
     loss_hist_pde_batches = []
     loss_hist_stress_bc_batches = []
-
 
     for batch_pde, batch_stress_bc in train_batches:
 
@@ -178,7 +172,6 @@ print(inputs1)
 u = ansatz(inputs1)
 print('predicted1:',u)
 
-
 def prediction_input_normalized(x_cord,E_pred):
 
     E_nor_vec = torch.ones(num_points_pde*2,1)*E_pred
@@ -194,8 +187,6 @@ def true_displacement(x, volume_force, force, area, length, youngs):
     disp = (-b * x**2 + 2 * sig * x + 2 * b * L * x) / (2 * E)
     return disp
 
-
-
 u_pred = []
 u_real = []
 x = torch.linspace(0, 1, num_points_pde*2,requires_grad=True).reshape(-1, 1).float()
@@ -210,7 +201,6 @@ for i in E_pred:
     u_r  = dis_true.detach().numpy()
     u_pred.append(u_fe.reshape(-1,1))
     u_real.append(u_r.reshape(-1,1))
-
 
 u_pred_con = np.concatenate(u_pred)
 u_real_con = np.concatenate(u_real)

@@ -146,10 +146,6 @@ def loss_fun(ansatz,PDE_data):
 #Training
 
 loss_hist_fem = []
-loss_hist_stress_bc = []
-valid_hist_mae = []
-valid_hist_rl2 = []
-valid_epochs = []
 
 def loss_func_closure() -> float:
     optimizer.zero_grad()
@@ -177,11 +173,9 @@ for epoch in range(num_epochs):
     loss_hist_fem.append(mean_loss_fem)
 
     with torch.autograd.no_grad():
-        print(epoch,"Traning Loss pde:",loss.detach().item())
+        print(epoch,"Traning Loss FEM-NN:",loss.detach().item())
 
 et = time.time()
-
-print('Execution time:', et - st, 'seconds')
 
 def prediction_input_normalized(x_cord,E_pred):
     E_nor = (E_pred-min_youngs_modulus)/(max_youngs_modulus-min_youngs_modulus)

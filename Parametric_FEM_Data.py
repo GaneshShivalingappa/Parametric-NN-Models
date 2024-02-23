@@ -38,8 +38,6 @@ def normalize_input(x,E):
     else:
         E_nor = (E - E_min)/(E_max-E_min)
     return x_nor,E_nor
-    #return E_nor
-
 
 def calculate_displacements_solution_1D(
     coordinates: Tensor | float,
@@ -62,11 +60,8 @@ for e in E:
     u = torch.from_numpy(u).type(torch.float)
     u_data.append(u)
 
-print(u_data)
-
 u_data = torch.cat(u_data, dim=0)
 u_data = u_data.reshape(-1,1)
-print(u_data)
 
 print("Create training data ...")
 train_dataset = create_training_dataset_1D(length=length,
@@ -117,15 +112,11 @@ def loss_fun(PDE_data):
     x = PDE_data.x_coor
     x_e = PDE_data.x_E
     x,x_e = normalize_input(x,x_e)
-    print('input normalized',torch.concat((x, x_e), dim=1))
     u = ansatz(torch.concat((x, x_e), dim=1))
-    print(u)
     loss = loss_metric(u,u_data)
-    print(loss)
     return loss
 
 #Training
-
 loss_hist_fem = []
 loss_hist_stress_bc = []
 valid_hist_mae = []
@@ -158,7 +149,7 @@ for epoch in range(num_epochs):
     loss_hist_fem.append(mean_loss_fem)
 
     with torch.autograd.no_grad():
-        print(epoch,"Traning Loss pde:",loss.detach().item())
+        print(epoch,"Traning Loss FEM-Data-NN:",loss.detach().item())
 
 def prediction_input_normalized(x_cord,E_pred):
     if (max_youngs_modulus==min_youngs_modulus):
@@ -182,7 +173,6 @@ u_pred = []
 u_real = []
 x = Variable(torch.from_numpy(np.linspace(0, 1, num_points_pde*2 ).reshape(-1, 1)).float(), requires_grad=True)
 E_pred = np.linspace(max_youngs_modulus,min_youngs_modulus,num_samples_train*2)
-print(E_pred)
 
 for i in E_pred:
     input_femnn = prediction_input_normalized(x_cord=x,E_pred=i)
@@ -193,11 +183,9 @@ for i in E_pred:
     u_pred.append(u_fe.reshape(-1,1))
     u_real.append(u_r.reshape(-1,1))
 
-
 u_pred_con = np.concatenate(u_pred)
 u_real_con = np.concatenate(u_real)
 uu = u_pred_con.reshape(num_points_pde*2,num_samples_train*2)
-print(uu)
 
 u_relative_error = []
 
