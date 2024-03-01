@@ -126,6 +126,7 @@ def loss_fun(ansatz ,pde_data,stress_bc_data)-> tuple[Tensor, Tensor]:
 
 loss_hist_pde = []
 loss_hist_stress_bc = []
+total_loss = []
 def loss_func_closure() -> float:
         optimizer.zero_grad()
         loss_pde, loss_stress_bc = loss_fun(ansatz, batch_pde, batch_stress_bc)
@@ -154,13 +155,16 @@ for epoch in range(num_epochs):
     
     mean_loss_pde = statistics.mean(loss_hist_pde_batches)
     mean_loss_stress_bc = statistics.mean(loss_hist_stress_bc_batches)
+    mean_total_loss = mean_loss_pde + mean_loss_stress_bc
     loss_hist_pde.append(mean_loss_pde)
     loss_hist_stress_bc.append(mean_loss_stress_bc)
+    total_loss.append(mean_total_loss)
 
     with torch.autograd.no_grad():
 
         print(epoch,"Traning Loss pde:",mean_loss_pde)
         print(epoch,"Traning Loss stress:",mean_loss_stress_bc)
+        print(epoch,"Total Traning Loss:",mean_total_loss)
 
 et = time.time()
 print('Execution time:', et - st, 'seconds')
@@ -226,8 +230,8 @@ x = np.linspace(0,1,num_points_pde*2)
 print(uu)
 
 plt.figure(0)
-plt.semilogy(loss_hist_pde)
-plt.title(f'Training Loss (n = {num_points_pde})')
+plt.semilogy(total_loss)
+#plt.title(f'Training Loss (n = {num_points_pde})')
 plt.xlabel('Epoch')
 plt.ylabel('Loss')
 plt.savefig(f'loss_PINN_{num_epochs}_{seed}.png')

@@ -205,7 +205,7 @@ x = np.linspace(0,1,num_points_pde*2)
 
 plt.figure(0)
 plt.semilogy(loss_hist_fem)
-plt.title(f'Training Loss (n = {num_points_pde})')
+#plt.title(f'Training Loss (n = {num_points_pde})')
 plt.xlabel('Epoch')
 plt.ylabel('Loss')
 plt.savefig(f'FEM_data_loss_{num_epochs}_{seed}.png')
