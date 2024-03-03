@@ -51,11 +51,8 @@ def FEM_data(no_element, num_samples_train):
         u = torch.from_numpy(u).type(torch.float)
         u_data.append(u)
 
-    #print(u_data)
-
     u_data = torch.cat(u_data, dim=0)
     u_data = u_data.reshape(-1,1)
-    #print(u_data)
     
 
     print("Create training data ...")
@@ -153,7 +150,7 @@ def FEM_data(no_element, num_samples_train):
         loss_hist_fem.append(mean_loss_fem)
 
         with torch.autograd.no_grad():
-            print(epoch,"Traning Loss pde:",loss.detach().item())
+            print(epoch,"Traning Loss FEM-Data-NN:",loss.detach().item())
 
     et = time.time()
     return et - st
@@ -286,10 +283,6 @@ def FEM_NN(no_element,num_samples_train):
     #Training
 
     loss_hist_fem = []
-    loss_hist_stress_bc = []
-    valid_hist_mae = []
-    valid_hist_rl2 = []
-    valid_epochs = []
 
     def loss_func_closure() -> float:
         optimizer.zero_grad()
@@ -317,7 +310,7 @@ def FEM_NN(no_element,num_samples_train):
         loss_hist_fem.append(mean_loss_fem)
 
         with torch.autograd.no_grad():
-            print(epoch,"Traning Loss pde:",loss.detach().item())
+            print(epoch,"Traning Loss FEM-NN:",loss.detach().item())
 
     et = time.time()
 
@@ -424,9 +417,7 @@ def PINN(no_element, num_samples_train):
 
     loss_hist_pde = []
     loss_hist_stress_bc = []
-    valid_hist_mae = []
-    valid_hist_rl2 = []
-    valid_epochs = []
+    total_loss = []
     def loss_func_closure() -> float:
             optimizer.zero_grad()
             loss_pde, loss_stress_bc = loss_fun(ansatz, batch_pde, batch_stress_bc)
@@ -456,12 +447,14 @@ def PINN(no_element, num_samples_train):
 
         mean_loss_pde = statistics.mean(loss_hist_pde_batches)
         mean_loss_stress_bc = statistics.mean(loss_hist_stress_bc_batches)
+        mean_total_loss = mean_loss_pde + mean_loss_stress_bc
         loss_hist_pde.append(mean_loss_pde)
         loss_hist_stress_bc.append(mean_loss_stress_bc)
+        total_loss.append(mean_total_loss)
 
         with torch.autograd.no_grad():
 
-            print(epoch,"Traning Loss pde:",mean_loss_pde)
+            print(epoch,"Total Traning Loss:", mean_total_loss)
             #print(epoch,"Traning Loss stress:",mean_loss_stress_bc)
 
     et = time.time()
