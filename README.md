@@ -34,6 +34,12 @@ Parametric FEM-data based model
 ```
 singularity run --app Parametric_FEM-Data parametric_nn.sif
 ```
+
+The training loss for all methods can be plotted using the following command.
+```
+singularity run --app training_loss parametric_nn.sif
+``` 
+
 ## 2. Training Time Analysis
 
 We conducted training time analysis in two scenarios. In the first scenario, we kept the number of nodes constant by varying the number of samples, and in the second scenario, it is vice versa. The command to run the code to create the plot is given below.
