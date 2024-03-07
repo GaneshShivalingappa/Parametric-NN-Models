@@ -21,15 +21,15 @@ for i in sample:
     num_iter = 25
 
     for k in range(num_iter):
-        t_FEM_Data = FEM_data(no_element=i-1, num_samples_train=64)
+        t_FEM_Data, loss_fem_data = FEM_data(no_element=i-1, num_samples_train=64)
         train_time_FEM_Data.append(t_FEM_Data)
 
     for l in range(num_iter):
-        t_FEM_NN = FEM_NN(no_element=i-1, num_samples_train=64)
+        t_FEM_NN, loss_fem_nn = FEM_NN(no_element=i-1, num_samples_train=64)
         train_time_FEM_NN.append(t_FEM_NN)
     
     for m in range(num_iter):
-        t_PINN = PINN(no_element=i, num_samples_train=64)
+        t_PINN, loss_pinn = PINN(no_element=i, num_samples_train=64)
         train_time_PINN.append(t_PINN)
 
     mean_FEM_Data.append(statistics.mean(train_time_FEM_Data))
@@ -42,7 +42,7 @@ for i in sample:
 plt.figure(1)
 plt.errorbar(sample, mean_PINN, std_PINN, label='FEM-NN', fmt='-o',capsize=2, linewidth=1)
 plt.errorbar(sample, mean_FEM_NN, std_FEM_NN, label='PINN', fmt='-o',capsize=2, linewidth=1)
-plt.errorbar(sample,mean_FEM_Data,std_FEM_Data,label='FEM-Data', fmt='-o',capsize=2, linewidth=1)
+plt.errorbar(sample,mean_FEM_Data,std_FEM_Data,label='FEM-Data-NN', fmt='-o',capsize=2, linewidth=1)
 plt.xlabel('Nodes')
 plt.ylabel('Training time [s]')
 plt.legend(loc='upper left')

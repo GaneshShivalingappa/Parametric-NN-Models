@@ -153,7 +153,7 @@ def FEM_data(no_element, num_samples_train):
             print(epoch,"Traning Loss FEM-Data-NN:",loss.detach().item())
 
     et = time.time()
-    return et - st
+    return et - st, loss_hist_fem
 
 def FEM_NN(no_element,num_samples_train):
     no_element = no_element
@@ -282,7 +282,7 @@ def FEM_NN(no_element,num_samples_train):
 
     #Training
 
-    loss_hist_fem = []
+    loss_hist_fem_NN = []
 
     def loss_func_closure() -> float:
         optimizer.zero_grad()
@@ -307,14 +307,14 @@ def FEM_NN(no_element,num_samples_train):
             loss_hist_fem_batches.append(loss.detach().item())
 
         mean_loss_fem = statistics.mean(loss_hist_fem_batches)
-        loss_hist_fem.append(mean_loss_fem)
+        loss_hist_fem_NN.append(mean_loss_fem)
 
         with torch.autograd.no_grad():
             print(epoch,"Traning Loss FEM-NN:",loss.detach().item())
 
     et = time.time()
 
-    return et - st
+    return et - st, loss_hist_fem_NN
 
 def PINN(no_element, num_samples_train):
 
@@ -458,4 +458,4 @@ def PINN(no_element, num_samples_train):
             #print(epoch,"Traning Loss stress:",mean_loss_stress_bc)
 
     et = time.time()
-    return et - st
+    return et - st, total_loss
