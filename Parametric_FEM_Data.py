@@ -90,7 +90,7 @@ class Ansatz(nn.Module):
     def forward(self, inputs):
         x_coor = inputs[:, 0]
         G_u = 0.0
-        D_u = 0.0 - x_coor
+        D_u = x_coor
         u = G_u + D_u *self.Nnet(inputs).reshape(-1)
         u = u * u_data.max()
         return u.reshape(-1,1)
@@ -205,7 +205,6 @@ x = np.linspace(0,1,num_points_pde*2)
 
 plt.figure(0)
 plt.semilogy(loss_hist_fem)
-#plt.title(f'Training Loss (n = {num_points_pde})')
 plt.xlabel('Epoch')
 plt.ylabel('Loss')
 plt.savefig(f'FEM_data_loss_{num_epochs}_{seed}.png')

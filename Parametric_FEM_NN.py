@@ -90,7 +90,7 @@ class Ansatz(nn.Module):
     def forward(self, inputs):
         x_coor = inputs[:, 0]
         G_u = 0.0
-        D_u = 0.0 - x_coor
+        D_u = x_coor
         u = G_u + D_u * self.Nnet(inputs).reshape(-1)
         return u * max_displacement
 
