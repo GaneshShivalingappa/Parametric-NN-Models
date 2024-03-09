@@ -118,10 +118,7 @@ def loss_fun(PDE_data):
 
 #Training
 loss_hist_fem = []
-loss_hist_stress_bc = []
-valid_hist_mae = []
-valid_hist_rl2 = []
-valid_epochs = []
+
 
 def loss_func_closure() -> float:
     optimizer.zero_grad()
