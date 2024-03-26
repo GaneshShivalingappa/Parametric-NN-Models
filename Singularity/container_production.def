@@ -18,7 +18,7 @@ From: nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
     # Install miniconda3
     # From https://docs.conda.io/projects/miniconda/en/latest/
     export CONDA_DIR=/miniconda3
-    export SHA256SUM=c9ae82568e9665b1105117b4b1e499607d2a920f0aea6f94410e417a0eff1b9c
+    export SHA256SUM=b978856ec3c826eb495b60e3fffe621f670c101150ebcbdeede4f961f22dc438
     
     mkdir -p ${CONDA_DIR}
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ${CONDA_DIR}/miniconda.sh -q
@@ -112,4 +112,3 @@ From: nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
     #!/bin/bash
     exec ${CONDA_DIR}/envs/$(head -n 1 /data/conda_venv.yml | cut -f 2 -d ' ')/bin/python3 /data/training_loss.py
 ##############################
-
