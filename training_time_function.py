@@ -11,6 +11,7 @@ import time
 from FEM.fem import NN_FEM, FEM
 from nn_model.normalized_hbc_ansatz_1d import create_normalized_hbc_ansatz_1D
 from nn_model.momentum import momentum_equation_func,traction_func
+from time import perf_counter
 
 torch.manual_seed(1)
 
@@ -132,7 +133,7 @@ def FEM_data(no_element, num_samples_train):
 
     print("Start training ...")
 
-    st = time.time()
+    st = perf_counter()
 
     for epoch in range(num_epochs):
         train_batches = iter(train_dataloader)
@@ -152,7 +153,7 @@ def FEM_data(no_element, num_samples_train):
         with torch.autograd.no_grad():
             print(epoch,"Traning Loss FEM-Data-NN:",loss.detach().item())
 
-    et = time.time()
+    et = perf_counter()
     return et - st, loss_hist_fem
 
 def FEM_NN(no_element,num_samples_train):
@@ -292,7 +293,7 @@ def FEM_NN(no_element,num_samples_train):
 
     print("Start training ...")
 
-    st = time.time()
+    st = perf_counter()
 
     for epoch in range(num_epochs):
         train_batches = iter(train_dataloader)
@@ -312,7 +313,7 @@ def FEM_NN(no_element,num_samples_train):
         with torch.autograd.no_grad():
             print(epoch,"Traning Loss FEM-NN:",loss.detach().item())
 
-    et = time.time()
+    et = perf_counter()
 
     return et - st, loss_hist_fem_NN
 
@@ -426,7 +427,7 @@ def PINN(no_element, num_samples_train):
             return loss.item()
 
     print("Start training ...")
-    st = time.time()
+    st = perf_counter()
 
     for epoch in range(num_epochs):
         train_batches = iter(train_dataloader)
@@ -457,5 +458,5 @@ def PINN(no_element, num_samples_train):
             print(epoch,"Total Traning Loss:", mean_total_loss)
             #print(epoch,"Traning Loss stress:",mean_loss_stress_bc)
 
-    et = time.time()
+    et = perf_counter()
     return et - st, total_loss
