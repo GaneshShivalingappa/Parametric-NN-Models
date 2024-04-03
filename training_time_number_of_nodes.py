@@ -40,8 +40,8 @@ for i in sample:
     std_PINN.append((statistics.stdev(train_time_PINN))/(np.sqrt(num_iter)))
 
 plt.figure(1)
-plt.errorbar(sample, mean_PINN, std_PINN, label='FEM-NN', fmt='-o',capsize=2, linewidth=1)
-plt.errorbar(sample, mean_FEM_NN, std_FEM_NN, label='PINN', fmt='-o',capsize=2, linewidth=1)
+plt.errorbar(sample, mean_PINN, std_PINN, label='PINN', fmt='-o',capsize=2, linewidth=1)
+plt.errorbar(sample, mean_FEM_NN, std_FEM_NN, label='FEM-NN', fmt='-o',capsize=2, linewidth=1)
 plt.errorbar(sample,mean_FEM_Data,std_FEM_Data,label='FEM-Data-NN', fmt='-o',capsize=2, linewidth=1)
 plt.xlabel('Nodes')
 plt.ylabel('Training time [s]')
