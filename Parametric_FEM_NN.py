@@ -239,8 +239,8 @@ plt.imshow(
     aspect='auto', 
     interpolation='bilinear',
     cmap='RdBu',
-    vmin=0.0,
-    vmax=3.9,
+    # vmin=0.0,
+    # vmax=3.9,
     )
 plt.colorbar( label='displacement (u) relative error [%]')
 plt.xlabel('x [m]')
