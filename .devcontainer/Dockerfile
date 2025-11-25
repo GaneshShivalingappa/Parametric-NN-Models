@@ -42,9 +42,11 @@ COPY $dev_requirements /tmp/
 
 ### Install base utilities
 RUN apt-get update && \
-    apt-get install -y git && \
-    apt-get install -y nano
-
+    apt-get install -y \
+        git \
+        nano \
+        libgeos-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 ### Install utilities
 # Install Python requirements
