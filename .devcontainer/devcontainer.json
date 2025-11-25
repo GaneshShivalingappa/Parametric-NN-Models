@@ -9,8 +9,8 @@
 		"context": "..",
 		"args": {
 			"username": "docker_user",
-			"uid": "1000",
-			"gid": "1000",
+			"uid": "1001",
+			"gid": "1001",
 			"requirements": "requirements_docker.txt",
 			"dev_requirements": "dev-requirements.txt"
 		}
