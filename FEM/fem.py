@@ -13,7 +13,7 @@ from scipy.sparse import csr_matrix
 def FEM(length:float, no_element:int, E:float, T:float):
 
     # Define physical variables
-    L = length        # Length of the bar
+    L = length # Length of the bar
 
     # Create the mesh
     num_elem = no_element  # Number of elements
