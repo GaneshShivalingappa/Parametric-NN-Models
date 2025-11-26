@@ -21,6 +21,11 @@
 		"source=${localWorkspaceFolder}/../input,target=/home/docker_user/input,type=bind,consistency=cached"
 	],
 
+	"containerEnv": {
+		// This will prevent the creation of __pycache__ folders.
+		"PYTHONDONTWRITEBYTECODE": "1"
+	},
+
 	"customizations": {
 		// Configure properties specific to VS Code.
 		"vscode": {
